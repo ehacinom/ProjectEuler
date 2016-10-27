@@ -74,7 +74,42 @@ class DLX:
         rowIdentifiers = []
         if rowNames == None: rowNames = [None] * len(rows)
         for i in range(len(rows)):
-            rowIdentifiers.append()
+            print 'row', rows[i], rowNames[i]
+            rowIdentifiers.append(self.appendRow(rows[i], rowNames[i]))
+        return rowIdentifiers
+    
+    def appendRow(self,row, rowName=None):
+        first = self.nodect
+        prev = self.nodect
+        for index in row:
+            print 'index', index
+            # append data to all lists for the node representing this row
+            
+            print 'U', self.U
+            self.U.append(self.U[index])
+            print 'U', self.U
+            
+            print 'D', self.D
+            self.D.append(index)
+            self.D[self.U[index]] = self.nodect
+            print 'D', self.D
+            
+            self.U[index] = self.nodect
+            print 'U', self.U
+            
+            self.S[index] += 1
+            
+            print 'C', self.C
+            self.C.append(index)
+            print 'C', self.Cc
+            
+            
+        return first
+
+
+
+
+
         
 if __name__ == '__main__':
     columns = [('a',DLX.PRIMARY), ('b',DLX.PRIMARY), ('c',DLX.PRIMARY), 
